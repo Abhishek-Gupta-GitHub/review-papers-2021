@@ -4,11 +4,11 @@
             left=2.5cm,
             right=2.5cm,
             headsep=10pt,
-            a4paper]{geometry} % Page margins
+            a4paper]{geometry}
 
-\title{Numerical Simulations of Planet formations in the Universe}
-\author{Will be updated in final edit}
-\date{\today}
+\title{Different Numerical Simulation of Planets in Universe}
+\author{Abhishek, Aditya, Aman, Purnath, Sanjana, Sukhvinder, Sanath }
+
 
 
 \usepackage{amsmath}
@@ -16,34 +16,53 @@
 \usepackage{tikz}
 \usepackage[english]{babel}
 \usepackage{biblatex}
+\usepackage{float}
+\usepackage{multicol}
 
-\addbibresource{sample.bib}
-
-%add your work in form of folders and use \input{folder_name/file_name} 
+\addbibresource{references.bib}
 
 \begin{document}
+
 \maketitle
 
+
+\tableofcontents
+
 \section{Abstract}
-\input{keplerabstract}
+\input{Abstract}
 
 
 \section{Introduction}
-\input{keplerintro}
 
 
+\input{pebble accretion/pebble_intro.tex}
+
+\input{terrestrial/terrestrial_intro}
+
+\input{kepler34/kepler_intro.tex}
+
+\newpage
 \section{Methods}
-\input{keplermethod}
+
+\subsection{Planet formation via pebble accretion}
+\input{pebble accretion/pebble_methods.tex}
+\subsection{Terrestrial planet formation via direct accretion of embryos}
+\input{terrestrial/terrestial_method}
+\subsection{Protoplanetary disk for the formation of circumbinary planets in the Kepler-34 system}
+\input{kepler34/kepler_method}
+
 
 \section{Results}
-\input{Kepler results}
+
+\input{pebble accretion/pebble_results}
+
+\input{kepler34/kepler_results}
 
 \section{Conclusion}
-Conclusion will be edit at last for whole review paper
+Conclusion will be edited at last for whole review paper
 
-Let us cite paper  and our paper \cite{Lines_2014}
+
 
 \printbibliography
-
 
 \end{document}
