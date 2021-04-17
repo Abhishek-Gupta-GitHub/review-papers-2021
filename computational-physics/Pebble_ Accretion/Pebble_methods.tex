@@ -1,0 +1,84 @@
+Kepler-adapted symplectic N-body code SyMBA with modifications to include effects of pebble accretion, gas-envelope accretion,  eccentricity,inclination damping and planet migration is used for studying planet formation via pebble accretion. The modification in the integration step in SyMBA is - 
+\begin{equation}
+ P^{\frac{\tau}{2}}M^{\frac{\tau}{2}}I^{\frac{\tau}{2}}D^{\tau}I^{\frac{\tau}{2}}M^{\frac{\tau}{2}}P^{\frac{\tau}{2}}  
+\end{equation}
+
+\noindent
+where $\tau$ is the time step, $D$ advances the planets along their osculating Kepler orbits,$I$ handles the secular interactions between the planets ,$M$ generates radial migration and eccentricity and inclination damping, and $P$ is associated with the accretion of pebbles and gas.
+\noindent
+Two additional adjustments  are made to the SyMBA algorithm : $(i)$ smoother partition function to decompose the gravitational force between two planets into forces that are non-zero, and $(ii)$ relation to compute planetary radii so that the system is approximately symplectic.   
+
+\subsubsection{Disc model} 
+The steady accretion rate of the disc gas onto the central star is given by 
+\begin{equation}
+\Dot{M_*} = 3\pi\Sigma_g\nu = 3\pi\alpha\Sigma_gh_g^{2}\Omega
+\end{equation}
+
+\noindent
+where $\Sigma_g$ is the gas surface mass density, $h_g$ is the pressure-scale height of a gas disc,$\Omega$ is the orbital frequency and $\alpha$ is the viscosity parameter which is constant throughout. Viscosity is given by $v=\alpha c_sh_g$ where $c_s$ is the isothermal sound speed.  
+The stellar mass accretion rate is given by
+\begin{equation}
+log(\frac{\Dot{M_*}}{M_\odot yr^-1})= -8-\frac{7}{5}log(\frac{t}{Myr} + 0.1) 
+\end{equation}
+
+\noindent
+The disc temperature is given by the heating source. In the inner region, viscous heating is predominant and in the outer region, stellar irradiation is predominant. The middle temperature is an approximate  of the viscous and irradiation temperatures.
+All the parameters throughout the simulations are normalised. 
+
+\subsubsection{Pebble accretion rate}
+
+Depending on whether the accretion is considered to be 2D or 3D, the mass growth rate for the embryos is given by 
+\begin{equation}
+ \Dot{M_p} = min(\Dot{M_{2D}} ,\Dot{M_{3D}}) = min(\sqrt{\frac{8h_p}{\pi b}}, 1) \sqrt{\frac{\pi b^{2}}{2h_p}}\Sigma_p\Delta\nu   
+\end{equation}  
+
+\noindent
+where ${h_p}$ is the pebble disc’s scale height, $b$ is the collisional cross-section radius of pebble flows,$\Sigma_p$ is the surface mass density of a pebble disc and $\Delta\nu$ is the relative speed between an embryo and a pebble. 
+
+\noindent
+The transition from 2D to 3D occurs when $b \gg h_p$. The pebble mass flux decreases with time, as the stellar mass accretion rate $\Dot{M_{*g}}$ decreases and thus the disc’s density decreases. Efficiency of gas drag is measured by the Stoke's number $\tau_s$. Smaller the $\tau_s$, greater is the pebble mass accretion rate. It is found that $\tau_s \ll 1$ except in the inner regions of the disc. Therefore, the gas drag is efficient and the collisional cross-section for pebble accretion is large. This is the reason for the efficiency of pebble accretion process.
+
+\subsubsection{Gas envelope accretion}
+Gas accretion occurs only for larges masses and when accretion onto the core is low so that the gas can contract. The critical mass of the core above which gas accretion may occur is given by 
+\begin{equation}
+ M_{pl,crit}\simeq 10(\frac{\Dot{M_{core}}}{10^{-6}M_Eyr^{-1}})^{\frac{1}{4}} M_E   
+\end{equation} 
+
+\noindent
+where $\Dot{M_{core}}=\Dot{M_{p}}$.
+The gas accretion rate does not depend on the opacity but is governed by how quickly the disc supplies gas to the planet. When the hill radius is two times the disc scale height, gas accretion stops.
+
+
+\subsubsection{Planet migration}
+The embryos and planets experience torque and tidal forces due to the gas discs. This results in radial migration and lowering of inclinations and eccentricities. Planets with a smaller mass experience type \textbf{I} migration and planets with larger masses undergo type \textbf{II} migration. The eccentricity and inclination damping and the planet migration is given by:
+
+\begin{equation}
+{a_e}= \frac{-\nu_r}{\tau_e}\hat{r} - \frac{0.5(\nu_\theta - \nu_\kappa}){\tau_e}\hat{\theta}
+\end{equation}
+
+\begin{equation}
+{a_e}=\frac{2A_{cz}\nu_z+A_{sz}z\Omega}{\tau_i}\hat{k}
+\end{equation}
+
+\begin{equation}
+{a_a}=\frac{\nu}{\tau_a}
+\end{equation}
+
+
+\noindent
+For a planet with $M_E$, the torque is expected to become positive. When the planet becomes massive to open a gap in the disc, type \textbf{II} migration sets in. However, the transition from type \textbf{I} migration to type  \textbf{II} migration is unclear. 
+
+
+
+
+\subsubsection{Initial conditions} 
+A range of values for each parameter is taken in order to provide multiple environments for planet formation. 
+\begin{itemize}
+\item The range of stellar metallicities used: [Fe/H] = (−0.5, 0.0, 0.5)
+\item The initial disc age is varied over: $t_{init}$=(0.1,0.5,1.0)Myr. 
+\item The values for initial stellar mass rates are: $\Dot(M_{* g}$=(25.1,2.64,1.0) $M^\Theta$/ yr
+\item The disc's viscosity parameter is changed over: $\alpha$ =  ($10^{-3},5x10^{-3},10^{-2}$)
+\end{itemize} 
+One set of simulations is run without migration effects and another set is with the type 1 and 2 migration effects.
+The seed embryos chosen roughly have the same mass of one lunar mass and they have a uniform radial distribution with distance between them approximately 70 hill radii.
+ 
