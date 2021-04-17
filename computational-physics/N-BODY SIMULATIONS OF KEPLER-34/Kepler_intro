@@ -1,0 +1,6 @@
+Planets in "p-type" orbits which are close to their host binaries $(a < 1.1 AU)$ have significant perturbations, making accretion difficult due to increase in impact speeds. In literature, there are numerical simulations of particles within circumbinary planetesimal disks in a collision model allowing for accretion and erosion.It revealed short-period perturbations on the disk to keep it excited but could not agree on the locations that could have supported the  growth of circumbinary planets.
+
+\noindent
+In the paper \cite{Lines_2014}, author presents high-resolution, three-dimensional, inter-particle gravity (IPG) enabled N-body simulations of a circumbinary protoplanetary disk. They worked on orbital dynamics, collisional evolution, and physical growth of 100 km sized planetesimals in the Kepler-34 system.
+
+\noindent
