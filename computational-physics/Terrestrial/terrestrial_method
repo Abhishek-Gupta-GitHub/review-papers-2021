@@ -1,0 +1,158 @@
+
+
+The principle difficulties of previous numerical studies can be summarized as follows:
+\begin{enumerate}
+
+\item Much higher eccentricities of the final planets than the real solar system planets.
+\item Differences in the formation sites of the bodies in the semi-major axis domain with respect to the planet.
+\item Very large number of final bodies.
+\end{enumerate}
+
+First and last points are related.Low eccentricities of planetesimals is required in order for the final eccentricities to be small.This unfortunately isolates the feeding zones of the embryos preventing further evolution thereby.This could be avoided by assigning some eccentricity to the initial planetesimal distribution (Cox \& Lewis 1980), which is rather large ($\sim 0.15$).
+
+The model can be improved in two ways: first, by introducing more realistic collision model and, secondly, by a more careful treatment of perturbations.\\
+In the Physical processes to simulate, collisions with outcomes other than accretion can occur, and their dynamical and evolutionary consequences are very different. Hence, most important physical processes are included.
+\\
+A model to be realistic must be able to treat the outcome of collisions both as a function of dynamic characteristics  of the impact (Relative velocity and the mass of the body involved) and the physical properties of the bodies. This helps in ordaining possible collisional outcome. Especially in cases where there is a choice between accreting and fragmenting.
+As there is no direct information about what happens when two planetesimals collide, the lab experiments on collisions under wide range of impact velocities and materials (Fujiwara \& Tsuamoto 1980; Hartmann 1978) form the basis to infer behaviour and outcomes. The experimental results however cannot be fully extrapolated to celestial bodies and hence is a rough approximation of these processes no matter how detailed a collision model is. The equipartition of impact energy (Impact energy is distributed evenly over both of the colliding bodies) is assumed throughout. The model employed (Greenberg et al. (1978) and Spaute et al. (1985)) considers the collision of two planetesimals of total mass, $M = m_{1}+m_{2}$ ($m_{1} \geq m_{2}$) and velocities $v_{1}$ and $v_{2}$ in the inertial frame respectively. The outcome from the collision are possibly divided into three categories: rebound, rebound with crater formation and fragmentation. 
+
+The total impact energy due to the motion of the bodies relative to the center of mass of the colliding pair is defined by: \
+\begin{equation}
+E = \frac{1}{2} \frac {m_{1}\cdot m_{2}} {m_{1}+m_{2}}\cdot V_{r}^{2}
+\end{equation}  
+where ${\bf V_{r}} = \bf v_{2}-v_{1}$ is the relative velocity.
+
+The collision between planetesimals is not expected to totally elastic, and hence the part of the impact energy is dissipated as heat during the encounter. The fraction of $E$ lost in this manner is $\eta$ and the energy after the collision is 
+\begin{equation}
+E' = (1-\eta)E.
+\end{equation}
+
+Using eqn 1, we define the rebound velocity 
+\begin{equation}
+{\bf V_{reb}} = -\sqrt{1-\eta}{\bf V_{r}}
+\end{equation} 
+Which is the velocity at which both bodies separate.The magnitude of n depends on the physical characteristics of the bodies. The value $\sqrt{1-\eta}$, denoted by $c_{i}$ sometimes and called the restitution coefficient, which is a ratio between the rebound velocity and the impact velocity.
+
+\subsubsection{Rebound}
+For a collision at significantly low relative velocities or impact energy, the result will be a rebound of both the bodies without cratering or chipping of either surface.Maximum strain on the surface of the body $(\frac{c \rho V_{r}}{2})$ must be lower than the crushing strength in order to prevent local fracture i.e. the relative velocity at he impact must satisfy the relation 
+\begin{equation}
+V_{r}<V_{c} = \frac{2 S}{c \rho}
+\end{equation}
+Where, $S$ is the impact strength, $c$ is the speed of sound and $\rho$, the density of the body. Hence, if $V_{r}<V_{c}$ we have a rebound, in which case both bodies separate with no change of mass, and with new velocities given by
+
+\begin{equation}
+{\bf v'_{1}}= {\bf V_{G}}-\frac {m_{2}}{M}{\bf V_{reb}}
+\end{equation}
+
+\begin{equation}
+{\bf v'_{2}} = V_{G}-\frac{m_{1}}{M}{\bf V_{reb}}
+\end{equation}
+
+with ${\bf V _{G}}$ the velocity of the center of mass of the two-body system,
+
+\begin{equation}
+{\bf V_{G}} = \frac{m_{1}{\bf{v_{1}}}+m_{2}{\bf{v_{2}}}}{m_{1}+m_{2}}
+\end{equation}
+
+In the simulation, the impact strength and density of the bodies are  input. The velocity at which both bodies separate after the impact is affected by the coefficients of restitution, which is also taken as another model parameter ( If this value is smaller than the mutual escape velocity of the two-body system, the two  are accreted into one body, using the center of mass approximation).
+
+\subsubsection{Rebound with crater formation:}
+If $V_{r}>V_{c}$ and impact energy is not very high as to shatter the bodies and the structure not strong enough to propagate the strain with sufficient speed, the surface will suffer some local damage (crater formation), after with which both bodies will separate at some fraction of their impact velocity. The cratering process removes a certain amount of mass from each body and the ratio of rebound over impact velocity (Restitution co-efficient) is smaller than that in the normal rebound (modified restitution coefficient denoted by $c_{ii}$), due to additional loss of energy in cratering and mass ejection at the impact site.
+The amount of mass excavated in such a collision and the velocity distribution of the debris are the two aspects of the cratering process that need to be modelled. The mass excavated in the crater of a body of mass $M$ that is struck by a projectile of mass $m_{pr}$ with velocity $V_{r}$ can be approximated(From Lab experiments of high energy impacts on semi infinite targets)
+\begin{equation}
+M_{ej} =  Km_{pr}{V_{r}}^{2}
+\end{equation}
+where $K$ is a constant that depends only on the material of the body. If  two bodies of mass $m_{1}$ and $m_{2}$ are considered and  if they collide with relative velocity $V_{1}$, the mass excavated b $m_{2}$ from $m_{1}$ can be written as
+\begin{equation}
+\Delta m_{1} = Km_{2}{V_{1}}^2
+\end{equation}
+
+
+And similarly for $m_{2}$. It is not necessary for new mass of $m_{1}$ to be $m_{1}-\Delta m_{1}$ as some of the fragments of the excavated mass ($\Delta m_{1}$) may have velocities (relative to $m_{1}$) smaller than the escape velocity and would therefore fall back to the surface. 
+fraction of $\Delta m_{1}$ and $\Delta m_{2}$ can be estimated  by a law for the cumulative mass of ejecta versus velocity according to which for solar system materials, the cumulative fraction (f) of ejecta with velocity greater than $v$ may be approximated by:
+
+\begin{equation}
+f(v) = c_{ej}v^{-9/4}
+\end{equation}
+
+The coefficient $c_{ej}$ is a parameter which only depends on the physical properties of the bodies involved( assumed constant for this particular model). Making use of this expression, the fraction of ejecta escaping from the parent body is given by the value of f which corresponds to the parent's escape velocity. he amount of mass that actually escapes from  $m$ therefore is 
+\begin{equation}
+{m_{ej}}^{(1)} = c_{ej}\Delta m_{1} {[{V_{e}}^{(1)}]}^{-9/4}
+\end{equation}
+or,introducing explicitly the expression for $\Delta m_{1}$:
+\begin{equation}
+{m_{ej}}^{(1)} = c_{ej}Km_{2}{V_{r}}^{2}{[{V_{e}}^{(1)}]}^{-9/4}
+\end{equation}
+where ${V_{e}}^{(1)}$ is the escape velocity from $m_{1}$.The same procedure is also valid for $m_{2}$. in both cases, the remaining mass returns to the body.
+The fraction of excavated mass that actually escapes he parent's potential well is very small hence it is not necessary o create other bodies out of this mass. The escaped mass of $m_{1}$ is added to $m_{2}$ instead and vice versa. This conserves mass of the system and as the values are small, this approximation will not significantly influence the evolution of the bodies. The new masses of the bodies are then 
+\begin{equation}
+m'_{1} = m_{1}-{m_{ej}}^{(1)}={m_{ej}}^{(2)}
+\end{equation}
+
+\begin{equation}
+m'_{2} = m_{2}-{m_{ej}}^{(2)}+{m_{ej}}^{(1)}
+\end{equation}
+
+The corresponding new velocities are 
+
+\begin{equation}
+{\bf v'_{1}} = {\bf V_{G}} - (\frac{m2}{M}){\bf V'_{reb}} 
+\end{equation}
+
+\begin{equation}
+{\bf v'_{2}} = {\bf V_{G}} + (\frac{m_{1}}{M}){\bf V'_{reb}}
+\end{equation}
+
+with ${\bf V'_{reb}} = -c_{ii}{\bf V_{r}}$
+
+\subsubsection{Fragmentation}
+
+ If the impact energy $E$ in the collision is very high, the internal structure of the body cannot resist the impact and shatters. From collision experiments, fragmentation is likely to occur if the impact energy per unit volume $(E/W)$ is greater than a certain critical value $S$ (impact energy). Experiments also show  that this parameter independent of body size and impact velocity, and depends only on the physical properties of the body itself. Hence, if $E>S_{i}W_{i}$, where $S_{i}$ and $W_{i}$ are the impact strength and volume of $m_{i}$ (i = 1,2), the body will shatter. 
+ 
+One or both bodies fragmenting, consequently. 
+the fragments of a shattered pair (just like crater ejecta) follow a cumulative mass distribution of the type $N(m) = Cm^{-b}$(Greenberg et al. (1970)) The values of the parameters $C$ and $b$ are related to the mass of the biggest fragment ($m_{max}$) by
+
+\begin{equation}
+b = {(1+\frac {m_{max}}{M})}^{-1},
+c = {(m_{max)}}^{b}
+\end{equation}
+
+$m_{max}$ is determined based on the work of Fujiwara,Kamimoto \& Tsukamoo (1977) found for basalt
+
+\begin{equation}
+m_{max} = {DM(E/M)}^{-1.24}
+\end{equation}
+
+where $D$ is a constant.For other materials ,Greenberg et al (1978) suggested that, the value of $D$ should be modified to ensure $m_{max} = M/2$ for marginal fragmentation.Marginal fragmentation occurs when $E = SW$, and therefore, for this value
+
+\begin{equation}
+\frac{M}{2} = DM{(\frac{SW}{M})}^{-1.24}
+\end{equation}
+
+An explicit expression for $D$ can then be introduced into eqn (2.17) yields for an material
+
+\begin{equation}
+m_{max} = \frac{M}{2}{(\frac{E}{SW})}^{-1.24}
+\end{equation}
+
+The velocity distribution of the fragments relative to parent body is again based on the cumulative function $f(v)$. Therefore part of the previous discussion also holds in this case as only part of the fragmented mass will have velocities greater than the escape velocity. The amount of mass the leaves the two-body system is
+
+\begin{equation}
+m_{ej} = c_{ej}M{(V_{e})}^{-9/4}
+\end{equation}
+where $V_{e}$ is the escape velocity from mass $M = m_{1}+m_{2}$. The remaining mass is gravitationally bound, and accretes into a single core. For the mass distribution of the fragments escaping, a small number of bodies, each with the appropriate mass to approximate the theoretical mass distribution.Each fragmentation is represented by four escaping bodies, as well as a remaining core. he chosen number is a compromise in order to prevent the particle number from  becoming too large. The new fragment masses are chosen according to 
+
+For $\alpha \geq 1$
+\begin{equation}
+M_{1} = \frac{m_{ej}m_{max}}{M}, 
+M_{2} = \frac{1}{alpha} m_{max}, 
+M_{3} = M_{4} = \frac {3-alpha}{2alpha} m_{max}
+\end{equation}
+
+for $\alpha < 1$
+\begin{equation}
+M_{1}=M_{2}=M_{3}=M_{4} = \frac{m_{ej}}{4}
+\end{equation}
+
+where $a = \frac{4m_{max}}{M}$.Here, $\alpha$ is an indicator of impact energy. For marginal fragmentation $\alpha = 2$, and
+this value decreases with increasing impact energy. Through experimentation, the fragments were distributed at $4R$ ( Where $R$ is the radius of $M$) from the center of mass, with phase difference of $\frac{\pi}{2}$ between them and were assigned parabolic velocities with respect to each new subsystem.
